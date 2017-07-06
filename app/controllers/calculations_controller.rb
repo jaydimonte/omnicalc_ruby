@@ -17,7 +17,28 @@ class CalculationsController < ApplicationController
 
     @character_count_without_spaces = @text.length - @text.split.count + 1
 
-    @occurrences = "Replace this string with your answer."
+    #Make a loop to count occurances 
+  
+    @lowercase_text = @text.downcase.gsub(/[^a-z0-9\s]/i, "")
+    @loop_array = @lowercase_text.split
+    @a = []
+    @b = []
+
+    while @loop_array.count > @a.count
+      
+      if @loop_array[@a.count] == @special_word
+        
+          @b.push(@special_word)
+      
+      end
+
+      @a.push(1) 
+
+    end
+
+    @occurrences = @b.count
+
+    # @occurrences = @special_word.in?(@text.downcase)
 
     # ================================================================================
     # Your code goes above.
