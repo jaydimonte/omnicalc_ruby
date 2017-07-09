@@ -124,24 +124,6 @@ class CalculationsController < ApplicationController
 
     @mean = @sum / @count
 
-
-    # @lowercase_text = @text.downcase.gsub(/[^a-z0-9\s]/i, "")
-    # @loop_array = @lowercase_text.split
-    # @a = []
-    # @b = []
-
-    # while @loop_array.count > @a.count
-      
-    #   if @loop_array[@a.count] == @special_word
-        
-    #       @b.push(@special_word)
-      
-    #   end
-
-    #   @a.push(1) 
-
-    # end
-
     @placeholder = 0
     @counter = 0
     
@@ -154,9 +136,28 @@ class CalculationsController < ApplicationController
 
     @variance = @placeholder / @count
 
-    @standard_deviation = @variance ** (1/2)
+    @standard_deviation = Math.sqrt(@variance)
 
-  #  @mode = @numbers.mode
+    @placeholder1 = 0
+    @counter = 0
+    @how_many = 0
+    @streak = 0
+    
+    while @counter < (@count - 1)
+    
+      @how_many = @numbers.count(@numbers[@counter])
+      
+      if @how_many > @streak
+        
+        @streak = @how_many
+
+      end
+    
+      @counter = @counter + 1
+      
+    end
+
+    @mode = @streak
 
     # ================================================================================
     # Your code goes above.
