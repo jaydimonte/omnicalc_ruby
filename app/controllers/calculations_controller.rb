@@ -104,6 +104,14 @@ class CalculationsController < ApplicationController
     
     @seconds = @remainder % 60
     
+    
+    @seconds = @seconds
+    @minutes = @minutes
+    @hours = @hours
+    @days = @days
+    @weeks = @weeks
+    @years = @years
+    
     # ================================================================================
     # Your code goes above.
     # ================================================================================
