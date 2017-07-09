@@ -59,7 +59,10 @@ class CalculationsController < ApplicationController
     # The principal value the user input is in the decimal @principal.
     # ================================================================================
 
-    @monthly_payment = "Replace this string with your answer."
+    @r = @apr / 12
+    @n = @years * 12 
+    
+    @monthly_payment = @principal * ( (@r * (1 + @r) ** @n) / ( (1 + @r) ** @n - 1) )
 
     # ================================================================================
     # Your code goes above.
@@ -80,6 +83,8 @@ class CalculationsController < ApplicationController
     #   So if you subtract one time from another, you will get an integer
     #   number of seconds as a result.
     # ================================================================================
+
+    
 
     @seconds = "Replace this string with your answer."
     @minutes = "Replace this string with your answer."
