@@ -59,7 +59,7 @@ class CalculationsController < ApplicationController
     # The principal value the user input is in the decimal @principal.
     # ================================================================================
 
-    @r = @apr / 12
+    @r = @apr / 1200
     @n = @years * 12 
     
     @monthly_payment = @principal * ( (@r * (1 + @r) ** @n) / ( (1 + @r) ** @n - 1) )
@@ -85,7 +85,6 @@ class CalculationsController < ApplicationController
     # ================================================================================
 
     
-
     @seconds = "Replace this string with your answer."
     @minutes = "Replace this string with your answer."
     @hours = "Replace this string with your answer."
@@ -108,27 +107,56 @@ class CalculationsController < ApplicationController
     # The numbers the user input are in the array @numbers.
     # ================================================================================
 
-    @sorted_numbers = "Replace this string with your answer."
+    @sorted_numbers = @numbers.sort
 
-    @count = "Replace this string with your answer."
+    @count = @numbers.count
 
-    @minimum = "Replace this string with your answer."
+    @minimum = @numbers.min
 
-    @maximum = "Replace this string with your answer."
+    @maximum = @numbers.max
 
-    @range = "Replace this string with your answer."
+    @range = @maximum - @minimum
 
-    @median = "Replace this string with your answer."
+    @mid_count = (@count + 1) / 2
+    @median = @sorted_numbers[@mid_count]
 
-    @sum = "Replace this string with your answer."
+    @sum = @numbers.sum
 
-    @mean = "Replace this string with your answer."
+    @mean = @sum / @count
 
-    @variance = "Replace this string with your answer."
 
-    @standard_deviation = "Replace this string with your answer."
+    # @lowercase_text = @text.downcase.gsub(/[^a-z0-9\s]/i, "")
+    # @loop_array = @lowercase_text.split
+    # @a = []
+    # @b = []
 
-    @mode = "Replace this string with your answer."
+    # while @loop_array.count > @a.count
+      
+    #   if @loop_array[@a.count] == @special_word
+        
+    #       @b.push(@special_word)
+      
+    #   end
+
+    #   @a.push(1) 
+
+    # end
+
+    @placeholder = 0
+    @counter = 0
+    
+    while @counter < @count
+    
+      @placeholder = ( ( @numbers[@counter] - @mean ) ** 2 ) + @placeholder
+      @counter = @counter + 1
+  
+    end
+
+    @variance = @placeholder / @count
+
+    @standard_deviation = @variance ** (1/2)
+
+  #  @mode = @numbers.mode
 
     # ================================================================================
     # Your code goes above.
