@@ -116,11 +116,8 @@ class CalculationsController < ApplicationController
     @maximum = @numbers.max
 
     @range = @maximum - @minimum
-
-   # @mid_count = (@count + 1) / 2
-   # @median = @sorted_numbers[@mid_count]
-
-    @median = 0
+ 
+    @median = ((@sorted_numbers[(@count - 1) / 2] + @sorted_numbers[@count / 2]) / 2).to_f
 
     @sum = @numbers.sum
 
