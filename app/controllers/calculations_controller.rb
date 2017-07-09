@@ -117,8 +117,10 @@ class CalculationsController < ApplicationController
 
     @range = @maximum - @minimum
 
-    @mid_count = (@count + 1) / 2
-    @median = @sorted_numbers[@mid_count]
+   # @mid_count = (@count + 1) / 2
+   # @median = @sorted_numbers[@mid_count]
+
+    @median = 0
 
     @sum = @numbers.sum
 
@@ -142,6 +144,7 @@ class CalculationsController < ApplicationController
     @counter = 0
     @how_many = 0
     @streak = 0
+    @winner = 0
     
     while @counter < (@count - 1)
     
@@ -150,6 +153,7 @@ class CalculationsController < ApplicationController
       if @how_many > @streak
         
         @streak = @how_many
+        @winner = @numbers[@counter]
 
       end
     
@@ -157,7 +161,7 @@ class CalculationsController < ApplicationController
       
     end
 
-    @mode = @streak
+    @mode = @winner
 
     # ================================================================================
     # Your code goes above.
