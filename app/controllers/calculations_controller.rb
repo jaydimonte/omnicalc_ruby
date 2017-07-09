@@ -85,32 +85,33 @@ class CalculationsController < ApplicationController
     #   number of seconds as a result.
     # ================================================================================
 
-    @difference = (@ending - @starting).to_i
-    @remainder = 0
+   # @difference = (@ending - @starting).to_i
+   # @remainder = 0
     
-    @years = @difference / 31536000 #31536000 seconds in a year 
-    @remainder = @difference % 31536000
+    @seconds = (@ending - @starting)
+    @minutes = (@ending - @starting) / 60
+    @hours = (@ending - @starting) / (3600)
+    @days = (@ending - @starting) / (86400)
+    @weeks = (@ending - @starting) / (604800)
+    @years = (@ending - @starting) / (31536000)
     
-    @weeks = @remainder / 604800    #604800 seconds in a week
-    @remainder = @remainder % 604800
+    # @years = @difference / 31536000 #31536000 seconds in a year 
+    # @remainder = @difference % 31536000
     
-    @days = @remainder / 86400      #86400 seconds in a day 
-    @remainder = @remainder % 86400
+    # @weeks = @remainder / 604800    #604800 seconds in a week
+    # @remainder = @remainder % 604800
     
-    @hours = @remainder / 3600      #3600 seconds in an hour
-    @remainder = @remainder % 3600
+    # @days = @remainder / 86400      #86400 seconds in a day 
+    # @remainder = @remainder % 86400
     
-    @minutes = @remainder / 60
+    # @hours = @remainder / 3600      #3600 seconds in an hour
+    # @remainder = @remainder % 3600
     
-    @seconds = @remainder % 60
+    # @minutes = @remainder / 60
     
+    # @seconds = @remainder % 60
     
-    @seconds = @seconds
-    @minutes = @minutes
-    @hours = @hours
-    @days = @days
-    @weeks = @weeks
-    @years = @years
+ 
     
     # ================================================================================
     # Your code goes above.
