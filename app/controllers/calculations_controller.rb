@@ -72,6 +72,7 @@ class CalculationsController < ApplicationController
   end
 
   def time_between
+    
     @starting = Chronic.parse(params[:starting_time])
     @ending = Chronic.parse(params[:ending_time])
 
@@ -84,14 +85,25 @@ class CalculationsController < ApplicationController
     #   number of seconds as a result.
     # ================================================================================
 
+    @difference = (@ending - @starting).to_i
+    @remainder = 0
     
-    @seconds = "Replace this string with your answer."
-    @minutes = "Replace this string with your answer."
-    @hours = "Replace this string with your answer."
-    @days = "Replace this string with your answer."
-    @weeks = "Replace this string with your answer."
-    @years = "Replace this string with your answer."
-
+    @years = @difference / 31536000 #31536000 seconds in a year 
+    @remainder = @difference % 31536000
+    
+    @weeks = @remainder / 604800    #604800 seconds in a week
+    @remainder = @remainder % 604800
+    
+    @days = @remainder / 86400      #86400 seconds in a day 
+    @remainder = @remainder % 86400
+    
+    @hours = @remainder / 3600      #3600 seconds in an hour
+    @remainder = @remainder % 3600
+    
+    @minutes = @remainder / 60
+    
+    @seconds = @remainder % 60
+    
     # ================================================================================
     # Your code goes above.
     # ================================================================================
